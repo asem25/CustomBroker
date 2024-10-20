@@ -2,7 +2,6 @@ package ru.semavin.app.util;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import ru.semavin.app.config.MessageBroker;
 import ru.semavin.app.models.Message;
 
@@ -15,7 +14,7 @@ public class SubscriberContainer {
 
     @PostConstruct
     private void init(){
-        executorService.submit(()->{
+        executorService.submit(() -> {
             for (String topic : SubscriberBeanPostProcessor.topics) {
                 for (Message message : messageBroker.getMessagesForTopic(topic)) {
                     messageBroker.notifySubscribers(topic, message);
