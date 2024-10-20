@@ -2,6 +2,8 @@ package ru.semavin.app.util;
 
 
 
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import ru.semavin.app.annotantions.Subscriber;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeansException;
@@ -11,6 +13,7 @@ import ru.semavin.app.config.MessageBroker;
 import java.util.*;
 
 @RequiredArgsConstructor
+@Slf4j
 public class SubscriberBeanPostProcessor implements BeanPostProcessor {
     private final MessageBroker messageBroker;
     protected final static List<String> topics = new ArrayList<>();
@@ -24,7 +27,7 @@ public class SubscriberBeanPostProcessor implements BeanPostProcessor {
             topics.add(topic);
             messageBroker.registerSubscriber(topic, bean);
 
-            System.out.println("Subsriber " + beanName + " been register");
+            log.info("Subsriber " + beanName + " been register");
         }
         return bean;
     }
