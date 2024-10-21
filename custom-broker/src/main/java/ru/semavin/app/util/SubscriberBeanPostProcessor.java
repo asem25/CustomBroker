@@ -4,6 +4,7 @@ package ru.semavin.app.util;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.NonNullApi;
 import ru.semavin.app.annotantions.Subscriber;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeansException;
@@ -19,6 +20,7 @@ public class SubscriberBeanPostProcessor implements BeanPostProcessor {
     protected final static List<String> topics = new ArrayList<>();
 
     @Override
+
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (bean.getClass().isAnnotationPresent(Subscriber.class)){
             Subscriber subscriber = bean.getClass().getAnnotation(Subscriber.class);
