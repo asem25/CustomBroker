@@ -4,7 +4,7 @@ package ru.semavin.app.config;
 import lombok.NoArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.LoggerFactory;
+
 import ru.semavin.app.models.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
